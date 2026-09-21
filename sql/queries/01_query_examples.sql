@@ -186,3 +186,21 @@ on s.student_id = e.student_id
    on same_course.student_id = same_enrollment.student_id
     where same_enrollment.course_name = e.course_name
 );
+
+select name,
+       city
+  from student
+ where city in (
+   select city
+     from student
+    where city = 'Panvel'
+);
+
+select name,
+       age
+  from student
+ where age in (
+   select age
+     from student
+    where age = 18
+);

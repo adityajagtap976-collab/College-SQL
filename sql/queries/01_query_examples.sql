@@ -204,3 +204,33 @@ select name,
      from student
     where age = 18
 );
+
+-- 16. VIEWS
+
+-- Create a view without the WITH CHECK OPTION
+create or replace view student_contact_v as
+   select student_id,
+          name,
+          city,
+          email
+     from student;
+
+-- Create a view with the WITH CHECK OPTION
+create or replace view high_sgpa_student_v as
+   select student_id,
+          name,
+          sgpa
+     from student
+    where sgpa >= 3.00
+with check option;
+
+-- Select data from the views
+select *
+  from student_contact_v;
+
+select *
+  from high_sgpa_student_v;
+
+-- Drop the views after use
+drop view student_contact_v;
+drop view high_sgpa_student_v;
